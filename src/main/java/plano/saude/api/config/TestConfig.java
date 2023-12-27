@@ -1,0 +1,30 @@
+package plano.saude.api.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import plano.saude.api.domain.Beneficiario;
+import plano.saude.api.repository.BeneficiarioRepository;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+@Configuration
+@Profile(value = "test")
+public class TestConfig implements CommandLineRunner {
+
+    @Autowired
+    private BeneficiarioRepository beneficiarioRepository;
+
+    @Override
+    public void run(String... args) throws Exception {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+        Beneficiario b1 = new Beneficiario(null, "Eduardo", "11952920696", sdf.parse("1998-11-02"), new Date(), new Date(), true);
+        beneficiarioRepository.save(b1);
+    }
+}

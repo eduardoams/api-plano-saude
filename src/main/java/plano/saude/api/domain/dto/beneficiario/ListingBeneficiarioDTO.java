@@ -4,9 +4,9 @@ import plano.saude.api.domain.Beneficiario;
 
 import java.util.Date;
 
-public record ListingBeneficiario(String nome, String telefone, Date dataNascimento) {
+public record ListingBeneficiarioDTO(String nome, String telefone, Date dataNascimento) {
 
-    public ListingBeneficiario(Beneficiario beneficiario) {
-        this(beneficiario.getNome(), beneficiario.getTelefone(), beneficiario.getDataNascimento());
+    public ListingBeneficiarioDTO(Beneficiario b) {
+        this(b.getNome(), b.getTelefone(), b.getDataNascimento());
     }
 }

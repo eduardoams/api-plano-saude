@@ -51,4 +51,10 @@ public class BeneficiarioService {
         entity.setTelefone(data.telefone());
         entity.setDataAtualizacao(Instant.now());
     }
+
+    public void delete(Long id) {
+        Beneficiario beneficiario = findById(id);
+        beneficiario.setAtivo(false);
+        repository.save(beneficiario);
+    }
 }

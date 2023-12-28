@@ -8,6 +8,7 @@ import plano.saude.api.domain.Beneficiario;
 import plano.saude.api.repository.BeneficiarioRepository;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.TimeZone;
@@ -25,8 +26,8 @@ public class TestConfig implements CommandLineRunner {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        Beneficiario b1 = new Beneficiario(null, "Eduardo", "11998765432", sdf.parse("1998-11-02"), new Date(), new Date(), true);
-        Beneficiario b2 = new Beneficiario(null, "Amanda", "11987654321", sdf.parse("1998-08-12"), new Date(), new Date(), true);
+        Beneficiario b1 = new Beneficiario(null, "Eduardo", "11998765432", sdf.parse("1998-11-02"), Instant.now(), Instant.now(), true);
+        Beneficiario b2 = new Beneficiario(null, "Amanda", "11987654321", sdf.parse("1998-08-12"), Instant.now(), Instant.now(), true);
         beneficiarioRepository.saveAll(Arrays.asList(b1, b2));
     }
 }
